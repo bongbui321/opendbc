@@ -39,6 +39,7 @@ jobs:
     - name: Generator test
       run: ${{ env.RUN }} "generator/test_generator.py"
 
+
   docker-push:
     name: docker push
     runs-on: ubuntu-20.04
