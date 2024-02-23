@@ -7,7 +7,6 @@ env:
   BUILD: | 
     export DOCKER_BUILDKIT=1
     docker pull ghcr.io/bongbui321/opendbc:latest || true
-    docker build --pull --cache-from ghcr.io/bongbui321/opendbc:latest -t opendbc -f Dockerfile .
   PYTHONWARNINGS: error
 
 
