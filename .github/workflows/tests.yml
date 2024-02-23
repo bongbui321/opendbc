@@ -8,7 +8,6 @@ env:
     docker buildx build --pull --load --cache-to type=inline --cache-from type=registry,ref=ghcr.io/bongbui321/opendbc:latest -t opendbc -f Dockerfile .
   PYTHONWARNINGS: error
 
-
 jobs:
   unit-tests:
     name: unit tests
