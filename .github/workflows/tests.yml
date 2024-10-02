@@ -13,7 +13,6 @@ on:
 jobs:
   unit-tests:
     name: unit tests
-    runs-on: ubuntu-24.04
     timeout-minutes: 1
     strategy:
       fail-fast: false
