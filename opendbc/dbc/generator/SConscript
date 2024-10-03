@@ -1,4 +1,17 @@
+import os
+from generator import generated_suffix, generator_path, opendbc_root, get_generated_dbc_files, get_python_generator_scripts
+
 Import('env')
 
+generator_scripts = get_python_generator_scripts(generator_path)
+
+generated_files = []
+for _, filenames in get_generated_dbc_files(generator_path).items():
+  for f in filenames:
+    output_filename = f.replace('.dbc', generated_suffix)
+    output_file_location = os.path.join(opendbc_root, output_filename)
+    generated_files.append(output_file_location)
+
 envDBC = env.Clone()
-envDBC.Command(None, "generator.py", "python3 $SOURCE")
+main_generator_script = File("generator.py")
+envDBC.Command(generated_files, [main_generator_script.abspath] + generator_scripts, f"python3 {main_generator_script.abspath}")
